@@ -94,6 +94,15 @@ server:
     ssl-port: {{ unbound_ssl_port }}
 {% endif %}
 
+{% if unbound_tls_port is defined %}
+    tls-port: {{ unbound_tls_port }}
+{% endif %}
+{% if unbound_tls_service_key is defined %}
+    tls-service-key: {{ unbound_tls_service_key }}
+{% endif %}
+{% if unbound_tls_service_pem is defined %}
+    tls-service-pem: {{ unbound_tls_service_pem }}
+{% endif %}
 
 {% for interface in unbound_outgoing_interfaces %}
     outgoing-interface: {{ interface }}
