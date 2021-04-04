@@ -28,6 +28,9 @@
 - include: root_anchor.yml
   when: unbound_auto_trust_anchor_file|default(false)
 
+- include: apparmor.yml
+  when: unbound_dns_over_tls|default(false)
+
 # Cannot move this part as the `verify` component of the previous task, because
 # unbound-checkconf fails if the file is outside {{ unbound_directory }}
 - name: Check unbound.conf

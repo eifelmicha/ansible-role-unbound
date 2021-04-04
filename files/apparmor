@@ -1,0 +1,3 @@
+# Allows Unbound to recursively read files in those two directory
+/etc/letsencrypt/archive/** r,
+/etc/letsencrypt/live/** r,

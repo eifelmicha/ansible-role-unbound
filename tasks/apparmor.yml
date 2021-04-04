@@ -1,0 +1,20 @@
+---
+- name: get stat of unbound apparmor profile
+  stat: path=/etc/apparmor.d/usr.sbin.unbound
+  register: apparmor_unbound_profile
+
+- name: adjust apparmor profile for unbound
+  copy:
+    src: apparmor
+    dest: /etc/apparmor.d/local/usr.sbin.unbound
+    owner: root
+    group: root
+    mode: 0644
+  when:
+    - apparmor_unbound_profile.stat.exists
+
+- name: replace apparmor profile for unbound
+  command: apparmor_parser --replace /etc/apparmor.d/usr.sbin.unbound
+  become: true
+  when:
+    - apparmor_unbound_profile.stat.exists

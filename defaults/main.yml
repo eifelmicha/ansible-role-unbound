@@ -47,6 +47,9 @@ unbound_local_zone_overrides: []
 unbound_trust_anchors: []
 unbound_trusted_keys_files: []
 
+# DNS over TLS
+unbound_dns_over_tls: []
+
 ### Remote Control ###
 
 unbound_control_enable: "no"
